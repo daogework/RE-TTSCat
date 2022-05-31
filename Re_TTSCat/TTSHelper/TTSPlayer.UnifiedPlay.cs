@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
@@ -61,6 +63,14 @@ namespace Re_TTSCat
                     break;
                 case 6:
                     fileName = await BaiduTTS.AiApi.Download(content, BaiduTTS.AiApi.ParseToSpeechPerson(Vars.CurrentConf.SpeechPerson));
+                    break;
+                case 7:
+                    {
+                        var dllfn = Path.Combine(Vars.ConfDir, "Microsoft.CognitiveServices.Speech.csharp.dll");
+                        Assembly.LoadFrom(dllfn);
+                        fileName = await MicrosoftTTS.Download(content);
+                    }
+                    
                     break;
             }
             if (fileName == null)
