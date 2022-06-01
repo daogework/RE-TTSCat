@@ -19,6 +19,7 @@ namespace Re_TTSCat
         /// <param name="ignoreRandomDitch">Specify true to ignore random ditching</param>
         public static async Task UnifiedPlay(string content, bool ignoreRandomDitch = false, bool overrideReadInQueue = false)
         {
+            var rawContent = content;
             if (string.IsNullOrWhiteSpace(content))
             {
                 Bridge.ALog("放弃: 内容为空");
@@ -68,7 +69,7 @@ namespace Re_TTSCat
                     {
                         var dllfn = Path.Combine(Vars.ConfDir, "Microsoft.CognitiveServices.Speech.csharp.dll");
                         Assembly.LoadFrom(dllfn);
-                        fileName = await MicrosoftTTS.Download(content);
+                        fileName = await MicrosoftTTS.Download(rawContent);
                     }
                     
                     break;

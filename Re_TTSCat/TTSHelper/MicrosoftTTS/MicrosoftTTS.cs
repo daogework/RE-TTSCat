@@ -18,7 +18,6 @@ namespace Re_TTSCat
 
         public static async Task<string> Download(string content)
         {
-            content = HttpUtility.UrlDecode(content);
             Trace.WriteLine("Download "+ content);
             var errorCount = 0;
         Retry:
