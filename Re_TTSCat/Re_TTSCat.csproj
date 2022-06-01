@@ -278,8 +278,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy C:\Users\Administrator\source\repos\RE-TTSCat\Re_TTSCat\bin\x64\Debug\Re_TTSCat.dll C:\Users\Administrator\Documents\弹幕姬\Plugins
-copy C:\Users\Administrator\source\repos\RE-TTSCat\Re_TTSCat\bin\x64\Debug\Re_TTSCat.pdb C:\Users\Administrator\Documents\弹幕姬\Plugins</PostBuildEvent>
+    <PostBuildEvent>copy $(TargetPath) C:\Users\Administrator\Documents\弹幕姬\Plugins
+</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\Microsoft.CognitiveServices.Speech.1.21.0\build\net461\Microsoft.CognitiveServices.Speech.targets" Condition="Exists('..\packages\Microsoft.CognitiveServices.Speech.1.21.0\build\net461\Microsoft.CognitiveServices.Speech.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
